@@ -57,18 +57,18 @@ public class Raft<V> {
   }
 
   public void persist(AppendLogEntriesRequest<V> request) {
-    if((request.getTerm()<term) || (!persistence.containIndex(request.getPrevLogIndex()))) {
+    if ((request.getTerm() < term) || (!persistence.containIndex(request.getPrevLogIndex()))) {
       transport.appendEntriesResponse(request.getLeaderId(), new AppendLogEntriesResponse<V>(term, false));
       return;
     }
 
-    if(!persistence.checkIndex(request.getPrevLogIndex(), request.getPrevLogTerm())) {
+    if (!persistence.checkIndex(request.getPrevLogIndex(), request.getPrevLogTerm())) {
       persistence.deleteFromIndex(request.getPrevLogIndex());
     }
     persistence.batch(request.getEntries());
   }
 
   public void heartbeat(HeartbeatRequest<V> request) {
-
+    term = request.getTerm();
   }
 }

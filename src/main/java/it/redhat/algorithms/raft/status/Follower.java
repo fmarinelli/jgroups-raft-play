@@ -2,7 +2,6 @@ package it.redhat.algorithms.raft.status;
 
 import it.redhat.algorithms.raft.Raft;
 import it.redhat.algorithms.raft.domain.AppendLogEntriesRequest;
-import it.redhat.algorithms.raft.domain.AppendLogEntriesResponse;
 import it.redhat.algorithms.raft.domain.HeartbeatRequest;
 import it.redhat.algorithms.raft.domain.VoteResponse;
 import it.redhat.algorithms.raft.services.Persistence;
@@ -33,14 +32,15 @@ public class Follower<V> implements Status<V> {
   }
 
   @Override
-  public void appendEntries(AppendLogEntriesRequest<V> request, final Callback<AppendLogEntriesResponse<V>> response) {
+  public void appendEntries(AppendLogEntriesRequest<V> request) {
     timer.reset();
     raft.persist(request);
   }
 
   @Override
-  public void heartbeat(HeartbeatRequest<V> request, Callback<AppendLogEntriesResponse<V>> response) {
+  public void heartbeat(HeartbeatRequest<V> request) {
     timer.reset();
+    raft.heartbeat(request);
   }
 
   @Override

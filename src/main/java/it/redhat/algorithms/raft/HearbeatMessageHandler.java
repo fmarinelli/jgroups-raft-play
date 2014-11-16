@@ -1,12 +1,10 @@
 package it.redhat.algorithms.raft;
 
-import it.redhat.algorithms.raft.domain.AppendLogEntriesResponse;
 import it.redhat.algorithms.raft.domain.HeartbeatRequest;
 import it.redhat.algorithms.raft.status.Status;
-import it.redhat.algorithms.raft.support.Callback;
 import it.redhat.algorithms.raft.support.Handler;
 
-public class HearbeatMessageHandler<V> implements Handler<HeartbeatRequest<V>, AppendLogEntriesResponse<V>> {
+public class HearbeatMessageHandler<V> implements Handler<HeartbeatRequest<V>> {
 
   private final Status<V> status;
 
@@ -15,8 +13,8 @@ public class HearbeatMessageHandler<V> implements Handler<HeartbeatRequest<V>, A
   }
 
   @Override
-  public void apply(HeartbeatRequest<V> request, Callback<AppendLogEntriesResponse<V>> response) {
-    status.heartbeat(request, response);
+  public void apply(HeartbeatRequest<V> request) {
+    status.heartbeat(request);
   }
 
   @Override

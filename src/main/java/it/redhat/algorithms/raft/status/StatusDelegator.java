@@ -1,10 +1,8 @@
 package it.redhat.algorithms.raft.status;
 
 import it.redhat.algorithms.raft.domain.AppendLogEntriesRequest;
-import it.redhat.algorithms.raft.domain.AppendLogEntriesResponse;
 import it.redhat.algorithms.raft.domain.HeartbeatRequest;
 import it.redhat.algorithms.raft.domain.VoteResponse;
-import it.redhat.algorithms.raft.support.Callback;
 
 public class StatusDelegator<V> implements Status<V> {
 
@@ -15,13 +13,13 @@ public class StatusDelegator<V> implements Status<V> {
   }
 
   @Override
-  public void appendEntries(AppendLogEntriesRequest<V> request, Callback<AppendLogEntriesResponse<V>> response) {
-    delegate.appendEntries(request, response);
+  public void appendEntries(AppendLogEntriesRequest<V> request) {
+    delegate.appendEntries(request);
   }
 
   @Override
-  public void heartbeat(HeartbeatRequest<V> request, Callback<AppendLogEntriesResponse<V>> response) {
-    delegate.heartbeat(request, response);
+  public void heartbeat(HeartbeatRequest<V> request) {
+    delegate.heartbeat(request);
   }
 
   @Override

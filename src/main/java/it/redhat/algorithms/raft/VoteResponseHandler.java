@@ -2,11 +2,9 @@ package it.redhat.algorithms.raft;
 
 import it.redhat.algorithms.raft.domain.VoteResponse;
 import it.redhat.algorithms.raft.status.Status;
-import it.redhat.algorithms.raft.status.StatusDelegator;
-import it.redhat.algorithms.raft.support.Callback;
 import it.redhat.algorithms.raft.support.Handler;
 
-public class VoteResponseHandler implements Handler<VoteResponse, Void> {
+public class VoteResponseHandler implements Handler<VoteResponse> {
 
   private final Status status;
 
@@ -15,7 +13,7 @@ public class VoteResponseHandler implements Handler<VoteResponse, Void> {
   }
 
   @Override
-  public void apply(VoteResponse message, Callback<Void> response) {
+  public void apply(VoteResponse message) {
     status.voteResponse(message);
   }
 

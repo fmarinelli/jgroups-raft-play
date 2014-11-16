@@ -1,9 +1,8 @@
 package it.redhat.algorithms.raft.support;
 
-public interface Handler<T, R> {
+public interface Handler<T> {
 
-
-  void apply(T request, Callback<R> response);
+  void apply(T request);
 
   boolean support(Class value);
 }

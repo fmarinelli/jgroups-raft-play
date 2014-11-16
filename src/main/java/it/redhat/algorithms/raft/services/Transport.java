@@ -8,7 +8,7 @@ import it.redhat.algorithms.raft.support.Handler;
 
 public interface Transport<V> {
 
-  <T, R> void onMessage(Handler<T, R> message);
+  <T> void onMessage(Handler<T> message);
 
   void appendEntries(AppendLogEntriesRequest<V> entries);
   void appendEntriesResponse(long leaderId, AppendLogEntriesResponse<V> response);
