@@ -16,11 +16,10 @@ public class FollowerTest {
   @Test
   public void testFollowerTimeout() {
     Raft<Long> raft = mock(Raft.class);
-    Persistence<Long> persistence = mock(Persistence.class);
     Timer timer= mock(Timer.class);
     ArgumentCaptor<Callback> argument = ArgumentCaptor.<Callback>forClass(Callback.class);
 
-    Follower<Long> follower = new Follower<Long>(raft, persistence, timer);
+    Follower<Long> follower = new Follower<Long>(raft, timer);
 
     verify(timer, times(1)).timeout(argument.capture());
     reset(timer);
