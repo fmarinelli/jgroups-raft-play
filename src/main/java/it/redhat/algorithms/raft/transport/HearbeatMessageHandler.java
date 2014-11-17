@@ -1,4 +1,4 @@
-package it.redhat.algorithms.raft;
+package it.redhat.algorithms.raft.transport;
 
 import it.redhat.algorithms.raft.domain.HeartbeatRequest;
 import it.redhat.algorithms.raft.status.Status;

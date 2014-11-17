@@ -1,4 +1,4 @@
-package it.redhat.algorithms.raft;
+package it.redhat.algorithms.raft.transport;
 
 import it.redhat.algorithms.raft.domain.AppendLogEntriesRequest;
 import it.redhat.algorithms.raft.status.Status;

@@ -10,6 +10,9 @@ import it.redhat.algorithms.raft.services.Transport;
 import it.redhat.algorithms.raft.status.Follower;
 import it.redhat.algorithms.raft.status.Status;
 import it.redhat.algorithms.raft.status.StatusDelegator;
+import it.redhat.algorithms.raft.transport.AppendEntriesHandler;
+import it.redhat.algorithms.raft.transport.HearbeatMessageHandler;
+import it.redhat.algorithms.raft.transport.VoteResponseHandler;
 
 import java.util.Set;
 
@@ -32,7 +35,7 @@ public class Raft<V> {
     this.transport = transport;
     this.timer = timer;
 
-    this.status = new StatusDelegator<V>(new Follower<V>(this, persistence, timer));
+    this.status = new StatusDelegator<V>(new Follower<V>(this, timer));
 
     this.transport.onMessage(new AppendEntriesHandler<V>(status));
     this.transport.onMessage(new HearbeatMessageHandler<V>(status));

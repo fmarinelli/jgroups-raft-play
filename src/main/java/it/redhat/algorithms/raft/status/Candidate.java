@@ -14,22 +14,20 @@ import java.util.Set;
 public class Candidate<V> implements Status<V> {
 
   private final Raft<V> raft;
-  private final Persistence<V> persistence;
   private final Timer timer;
 
   private final Set<Long> responses;
 
-  public Candidate(Raft<V> _raft, Persistence<V> _persistence, Timer _timer) {
+  public Candidate(Raft<V> _raft, Timer _timer) {
     responses = new HashSet<>();
     raft = _raft;
-    persistence = _persistence;
     timer = _timer;
 
     timer.timeout(new Callback<Void>() {
 
       @Override
       public void apply(Void aVoid) {
-        raft.changeStatus(new Candidate<V>(raft, persistence, timer));
+        raft.changeStatus(new Candidate<V>(raft, timer));
       }
     });
 
@@ -40,7 +38,7 @@ public class Candidate<V> implements Status<V> {
   public void appendEntries(AppendLogEntriesRequest<V> request) {
     timer.reset();
 
-    Follower<V> follower = new Follower<V>(raft, persistence, timer);
+    Follower<V> follower = new Follower<V>(raft, timer);
     raft.changeStatus(follower);
     raft.persist(request);
   }
@@ -49,7 +47,7 @@ public class Candidate<V> implements Status<V> {
   public void heartbeat(HeartbeatRequest<V> request) {
     timer.reset();
 
-    Follower<V> follower = new Follower<V>(raft, persistence, timer);
+    Follower<V> follower = new Follower<V>(raft, timer);
     raft.changeStatus(follower);
     raft.heartbeat(request);
   }
@@ -61,7 +59,7 @@ public class Candidate<V> implements Status<V> {
       if(raft.checkQuorum(responses)) {
         timer.reset();
 
-        raft.changeStatus(new Leader(raft, persistence, timer));
+        raft.changeStatus(new Leader(raft, timer));
       }
     }
   }
