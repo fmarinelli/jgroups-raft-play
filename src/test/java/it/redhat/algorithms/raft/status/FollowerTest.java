@@ -1,7 +1,6 @@
 package it.redhat.algorithms.raft.status;
 
 import it.redhat.algorithms.raft.Raft;
-import it.redhat.algorithms.raft.services.Persistence;
 import it.redhat.algorithms.raft.services.Timer;
 import it.redhat.algorithms.raft.support.Callback;
 import org.junit.Test;

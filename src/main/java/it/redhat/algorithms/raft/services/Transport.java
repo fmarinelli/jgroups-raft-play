@@ -1,9 +1,9 @@
 package it.redhat.algorithms.raft.services;
 
-import it.redhat.algorithms.raft.domain.AppendLogEntriesRequest;
-import it.redhat.algorithms.raft.domain.AppendLogEntriesResponse;
-import it.redhat.algorithms.raft.domain.VoteRequest;
-import it.redhat.algorithms.raft.domain.VoteResponse;
+import it.redhat.algorithms.raft.domain.messages.AppendLogEntriesRequest;
+import it.redhat.algorithms.raft.domain.messages.AppendLogEntriesResponse;
+import it.redhat.algorithms.raft.domain.messages.VoteRequest;
+import it.redhat.algorithms.raft.domain.messages.VoteResponse;
 import it.redhat.algorithms.raft.support.Handler;
 
 public interface Transport<V> {

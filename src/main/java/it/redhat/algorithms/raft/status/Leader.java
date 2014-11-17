@@ -1,9 +1,9 @@
 package it.redhat.algorithms.raft.status;
 
 import it.redhat.algorithms.raft.Raft;
-import it.redhat.algorithms.raft.domain.AppendLogEntriesRequest;
-import it.redhat.algorithms.raft.domain.HeartbeatRequest;
-import it.redhat.algorithms.raft.domain.VoteResponse;
+import it.redhat.algorithms.raft.domain.messages.AppendLogEntriesRequest;
+import it.redhat.algorithms.raft.domain.messages.HeartbeatRequest;
+import it.redhat.algorithms.raft.domain.messages.VoteResponse;
 import it.redhat.algorithms.raft.services.Timer;
 import it.redhat.algorithms.raft.support.Logger;
 

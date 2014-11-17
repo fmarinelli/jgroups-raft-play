@@ -1,6 +1,6 @@
-package it.redhat.algorithms.raft.domain;
+package it.redhat.algorithms.raft.domain.messages;
 
-public class AppendLogEntriesRequest<V> {
+public class HeartbeatRequest<V> {
 
   //so follower can redirect clients
   private long leaderId;
@@ -17,17 +17,12 @@ public class AppendLogEntriesRequest<V> {
   //index of log entry immediately preceding new ones
   private long prevLogIndex;
 
-  //log entries to store (empty for heartbeat; may send more than one for efficiency)
-  private Entry<V>[] entries;
-
-
-  public AppendLogEntriesRequest(long leaderId, long term, long leaderCommit, long prevLogTerm, long prevLogIndex, Entry<V>[] entries) {
+  public HeartbeatRequest(long leaderId, long term, long leaderCommit, long prevLogTerm, long prevLogIndex) {
     this.leaderId = leaderId;
     this.term = term;
     this.leaderCommit = leaderCommit;
     this.prevLogTerm = prevLogTerm;
     this.prevLogIndex = prevLogIndex;
-    this.entries = entries;
   }
 
   public long getLeaderId() {
@@ -50,7 +45,4 @@ public class AppendLogEntriesRequest<V> {
     return prevLogIndex;
   }
 
-  public Entry<V>[] getEntries() {
-    return entries;
-  }
 }

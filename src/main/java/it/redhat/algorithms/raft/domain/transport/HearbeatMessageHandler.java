@@ -1,6 +1,6 @@
-package it.redhat.algorithms.raft.transport;
+package it.redhat.algorithms.raft.domain.transport;
 
-import it.redhat.algorithms.raft.domain.HeartbeatRequest;
+import it.redhat.algorithms.raft.domain.messages.HeartbeatRequest;
 import it.redhat.algorithms.raft.status.Status;
 import it.redhat.algorithms.raft.support.Handler;
 

@@ -1,4 +1,6 @@
-package it.redhat.algorithms.raft.domain;
+package it.redhat.algorithms.raft.domain.messages;
+
+import it.redhat.algorithms.raft.domain.Entry;
 
 public class VoteRequest {
 

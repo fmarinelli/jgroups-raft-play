@@ -1,18 +1,18 @@
 package it.redhat.algorithms.raft;
 
-import it.redhat.algorithms.raft.domain.AppendLogEntriesRequest;
-import it.redhat.algorithms.raft.domain.AppendLogEntriesResponse;
-import it.redhat.algorithms.raft.domain.HeartbeatRequest;
-import it.redhat.algorithms.raft.domain.VoteRequest;
+import it.redhat.algorithms.raft.domain.messages.AppendLogEntriesRequest;
+import it.redhat.algorithms.raft.domain.messages.AppendLogEntriesResponse;
+import it.redhat.algorithms.raft.domain.messages.HeartbeatRequest;
+import it.redhat.algorithms.raft.domain.messages.VoteRequest;
 import it.redhat.algorithms.raft.services.Persistence;
 import it.redhat.algorithms.raft.services.Timer;
 import it.redhat.algorithms.raft.services.Transport;
 import it.redhat.algorithms.raft.status.Follower;
 import it.redhat.algorithms.raft.status.Status;
 import it.redhat.algorithms.raft.status.StatusDelegator;
-import it.redhat.algorithms.raft.transport.AppendEntriesHandler;
-import it.redhat.algorithms.raft.transport.HearbeatMessageHandler;
-import it.redhat.algorithms.raft.transport.VoteResponseHandler;
+import it.redhat.algorithms.raft.domain.transport.AppendEntriesHandler;
+import it.redhat.algorithms.raft.domain.transport.HearbeatMessageHandler;
+import it.redhat.algorithms.raft.domain.transport.VoteResponseHandler;
 
 import java.util.Set;
 

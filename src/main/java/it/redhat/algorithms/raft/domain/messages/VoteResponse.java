@@ -1,4 +1,4 @@
-package it.redhat.algorithms.raft.domain;
+package it.redhat.algorithms.raft.domain.messages;
 
 public class VoteResponse {
 
